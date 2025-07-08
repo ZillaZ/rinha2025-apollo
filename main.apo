@@ -1,0 +1,8 @@
+use std { sockets::sockets { new_tcp_listener TcpListener TcpSocket } threads::threads { fork sleep } }
+
+let tcp_listener = sockets::new_tcp_listener("127.0.0.1:8080")
+printf("TcpListener socket fd is %d\n", tcp_listener.fd)
+while true {
+	let socket = tcp_listener.accept()
+	printf("Socket fd is %d\n", socket.fd)
+}
